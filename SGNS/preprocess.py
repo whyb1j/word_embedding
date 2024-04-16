@@ -59,6 +59,7 @@ def read_data(data_path,train_path):
 def create_map(data_path):
     """读取指定路径的npy文件,建立词到索引的映射,统计词频
     """
+    print('---建立词到索引的映射---')
     text=np.load(data_path)
     vocab_dict = dict(Counter(text))# 得到单词字典表，key是单词，value是次数
     word2idx = {word:i for i, word in enumerate(vocab_dict.keys())}
