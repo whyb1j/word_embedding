@@ -3,9 +3,7 @@ import torch
 import copy
 class WordEmbeddingDataset(Dataset):
     def __init__(self, text, word2idx, word_freqs,window_size,K):
-        ''' text: a list of words, all text from the training dataset
-            word2idx: the dictionary from word to index
-            word_freqs: the frequency of each word
+        ''' 初始化
         '''
         super().__init__() # #通过父类初始化模型，然后重写两个方法
         self.text=text
@@ -20,10 +18,14 @@ class WordEmbeddingDataset(Dataset):
         return len(self.text_encoded) # 返回所有单词的总数，即item的总数
     
     def __getitem__(self, idx)  :
-        ''' 这个function返回以下数据用于训练
-            - 中心词
-            - 这个单词附近的positive word
-            - 随机采样的K个单词作为negative word
+        ''' 
+        每一个背景词对应self.K个负采样词
+        每个返回值的元素都是张量
+
+        Returns:
+            center_word: list 中心词 [1]
+            pos_words: list 背景词 [2*self.windows]
+            neg_words: list 负采样词  [2*self.windows*self.K]
         '''
         center_word = self.text_encoded[idx] # 取得中心词
         left = list(range(idx - self.window_size, idx))
