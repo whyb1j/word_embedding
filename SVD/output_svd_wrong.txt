@@ -4,8 +4,8 @@ tiger	tiger	1.0000001
 book	paper	0.36473325
 computer	keyboard	0.6472631
 computer	internet	0.4405724
-plane	car	0.41747108
-train	car	0.4217739
+plane	car	    0.41747108
+train	car	    0.4217739
 telephone	communication	0.49558368
 television	radio	0.7632275
 media	radio	0.4969192
