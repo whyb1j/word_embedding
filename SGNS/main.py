@@ -1,5 +1,6 @@
 from model import SGNS
-from preprocess import WordEmbeddingDataset,read_data,create_map
+from preprocess import read_data,create_map
+from dataset import WordEmbeddingDataset
 from utils import evaluate
 from argparse import Namespace
 from torch.utils.data import DataLoader
